@@ -7,7 +7,7 @@
 
     @vite('resources/css/app.css')
 </head>
-<body>
+<body class="w-screen h-screen bg-slate-50 flex flex-col justify-between" >
 <x-header />
 
 {{ $slot }}
