@@ -1,35 +1,58 @@
 <x-layout>
-        <section class="flex flex-col gap-2 items-center justify-center border-2 border-gray-200 rounded-xl p-4">
+    <section class="container-page py-12 sm:py-20">
+        <div class="mx-auto w-full max-w-md">
+            <div class="text-center">
+                <h1 class="text-3xl font-bold tracking-tight">Crie sua conta</h1>
+                <p class="mt-2 text-slate-600">Leva menos de um minuto para comecar.</p>
+            </div>
 
-    <h1 class="text-5xl font-bold underline">Welcome to register page</h1>
+            <form action="{{ route('auth.register') }}" method="POST" class="card mt-8 flex flex-col gap-5">
+                @csrf
 
-    <form action="{{ route("auth.register") }}" method="POST" class="flex flex-col gap-2">
-        @csrf
-        <label for="name" class="text-black font-semibold">Name</label>
-        <input type="text" class="text-black border-2 border-gray-200 rounded-xl p-2" placeholder="Seu nome" name="name" id="name">
-        @error('name')
-            <p class="text-red-500">{{ $message }}</p>
-        @enderror
-        <label for="email" class="text-black font-semibold">Email</label>
-        <input type="email" class="text-black border-2 border-gray-200 rounded-xl p-2" placeholder="Seu email" name="email" id="email">
-        @error('email')
-            <p class="text-red-500">{{ $message }}</p>
-        @enderror
-        <label for="password" class="text-black font-semibold">Password</label>
-        <input type="password" class="text-black border-2 border-gray-200 rounded-xl p-2" placeholder="Sua senha" name="password" id="password">
-        @error('password')
-            <p class="text-red-500">{{ $message }}</p>
-        @enderror
-        <label for="password_confirmation" class="text-black font-semibold">Confirmar Senha</label>
-        <input type="password" class="text-black border-2 border-gray-200 rounded-xl p-2" placeholder="Confirme sua senha" name="password_confirmation" id="password_confirmation">
-        @error('password_confirmation')
-            <p class="text-red-500">{{ $message }}</p>
-        @enderror
-        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">Register</button>
-    </form>
+                <div class="field">
+                    <label for="name" class="label">Nome</label>
+                    <input type="text" name="name" id="name" placeholder="Seu nome"
+                           class="input @error('name') input-error @enderror">
+                    @error('name')
+                        <p class="form-error">{{ $message }}</p>
+                    @enderror
+                </div>
 
-        <p class="text-center">
-        Já tem uma conta? <a href="{{ route('login') }}" class="font-semibold underline hover:opacity-50 transition-all duration-200">Faça login</a>
-    </p>
+                <div class="field">
+                    <label for="email" class="label">Email</label>
+                    <input type="email" name="email" id="email" placeholder="seuemail@provedor.com"
+                           class="input @error('email') input-error @enderror">
+                    @error('email')
+                        <p class="form-error">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="field">
+                    <label for="password" class="label">Senha</label>
+                    <input type="password" name="password" id="password" placeholder="Sua senha"
+                           class="input @error('password') input-error @enderror">
+                    @error('password')
+                        <p class="form-error">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="field">
+                    <label for="password_confirmation" class="label">Confirmar senha</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation"
+                           placeholder="Confirme sua senha"
+                           class="input @error('password_confirmation') input-error @enderror">
+                    @error('password_confirmation')
+                        <p class="form-error">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <button type="submit" class="btn btn-primary w-full">Registrar</button>
+            </form>
+
+            <p class="mt-6 text-center text-sm text-slate-600">
+                Ja tem uma conta?
+                <a href="{{ route('login') }}" class="link">Faca login</a>
+            </p>
+        </div>
     </section>
 </x-layout>
