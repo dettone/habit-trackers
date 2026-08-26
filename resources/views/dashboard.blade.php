@@ -127,6 +127,46 @@
                             </div>
                         @endfor
                     </div>
+
+                    <div class="flex justify-end border-t border-slate-100 pt-4">
+                        <form action="{{ route('habits.destroy', $habit) }}" method="POST" class="btn btn-error self-start sm:self-auto">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn">
+                            <svg class="size-6" 
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true">
+                                <path d="M3 6h18" />
+                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                            </svg>
+                            
+                            Deletar este habito
+                        </button>
+                        </form>
+
+   
+                            <a href="{{ route("habits.edit", $habit->id) }}" class="btn">
+                                <svg class="size-6"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                </svg>
+                             Editar este habito
+                           </a>
+                   
+                    </div>
                 </li>
             @empty
                 <li class="card col-span-full flex flex-col items-center gap-3 py-12 text-center">
