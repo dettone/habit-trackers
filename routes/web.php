@@ -20,4 +20,7 @@ Route::middleware('auth')->group(function (){
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/dashboard/habit', [SiteController::class, 'dashboard'])->name('site.dashboard');
     Route::resource('/dashboard/habits', HabitsController::class)->except(['show']);    
+    Route::get('/dashboard/habits/history', [HabitsController::class, 'history'])->name('habits.history');
+    Route::post('/dashboard/habits/{habit}/check', [HabitsController::class, 'check'])->name('habits.check');
+
 });
